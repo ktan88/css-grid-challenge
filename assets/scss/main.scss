@@ -1,11 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap');
 
-$brand-color: #0060a7;
-$brand-color--alt: violet;
+$brand-color: #a70000;
 $color-base: #4b4b4b;
 $base-font-family: 'Quicksand';
 $root-font-size: 14px;
-$h1-font-size: 3rem ;
+$h1-font-size: 4rem;
 
 html {
     font-size: $root-font-size;
@@ -15,22 +14,82 @@ body {
     margin: 0;
     color: $color-base;
     font-family: $base-font-family, sans-serif;
+    background-color: #eee;
+}
+
+/*
+ * 4 columns
+ * 3 rows
+ * 1 48px
+ * 2 25%
+ * 3 75%
+ * 4 48px
+*/
+
+// CREATING OUR GRID
+
+.o-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 50px) 1fr 2fr minmax(0, 50px);
+    grid-template-rows: 2fr 1fr auto;
+    grid-template-areas:
+                        ". headline img img"
+                        ". headline img img"
+                        ". headline content .";
+}
+
+.o-grid__img {
+    grid-area: img;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+//Headline bottom to top vertical
+.o-grid__headline {
+    grid-area: headline;
+    writing-mode: vertical-rl;
+    transform: rotate(.5turn);
+    justify-self: end;
+    width: min-content;
 }
 
 h1 {
     font-size: $h1-font-size;
     color: $brand-color;
-}
-.container {
-    display: grid;
-    border: 1px solid red;
+    text-transform: uppercase;
 }
 
-.item {
-    /* We center the contents of these items. You can also do this with flexbox too! */
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    border: 2px dotted red;
-    background-color: $brand-color--alt;
+//Pseudo Whitespace
+.o-grid__whitespace {
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+    background-color: #fff;
+}
+
+//Content
+.o-grid__content {
+    grid-area: content;
+    background-color: #fff;
+    padding: 50px;
+}
+
+.c-tags {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+}
+
+.c-tags__item {
+    border-radius: 1rem;
+    background-color: #6697d5;
+    color: #fff;
+    padding: .5rem;
+
+    & + & {
+        margin-left: 1rem;
+    }
 }
