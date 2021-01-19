@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap');
+
+$brand-color: #0060a7;
+$brand-color--alt: violet;
+$color-base: #4b4b4b;
+$base-font-family: 'Quicksand';
+$root-font-size: 14px;
+$h1-font-size: 3rem ;
+
+html {
+    font-size: $root-font-size;
+}
+
+body {
+    margin: 0;
+    color: $color-base;
+    font-family: $base-font-family, sans-serif;
+}
+
+h1 {
+    font-size: $h1-font-size;
+    color: $brand-color;
+}
+.container {
+    display: grid;
+    border: 1px solid red;
+}
+
+.item {
+    /* We center the contents of these items. You can also do this with flexbox too! */
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    border: 2px dotted red;
+    background-color: $brand-color--alt;
+}
